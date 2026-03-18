@@ -7,75 +7,14 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
         body, html { height: 100%; overflow: hidden; background-color: #000; }
-        
-        /* Contenedor del video de fondo */
-        #video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Capa oscura para que resalte el texto */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
+        #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        video { width: 100%; height: 100%; object-fit: cover; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 40px 20px; text-align: center; }
         .header h1 { color: #ffcc00; font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .header p { color: #fff; font-size: 1.5rem; font-weight: bold; }
-
-        .price-tag {
-            background: #e63946;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .cta-button {
-            background: #25d366;
-            color: white;
-            text-decoration: none;
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .cta-button:active { transform: scale(0.95); }
+        .price-tag { background: #e63946; color: white; padding: 15px 30px; border-radius: 50px; font-size: 2.5rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .cta-button { background: #25d366; color: white; text-decoration: none; padding: 20px 40px; border-radius: 50px; font-size: 1.8rem; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
@@ -96,10 +35,10 @@
             $9.500
         </div>
 
-        <a href="https://wa.me/543794123456?text=Hola!%20Quiero%20la%20promo%20de%20la%20Pizza%20Criolla" class="cta-button">
+        <a href="https://wa.me/543794112444?text=¡Hola!%20Quiero%20la%20promo%20de%20la%20Pizza%20Criolla" class="cta-button">
             <span>🍕</span> PEDIR AHORA
         </a>
     </div>
 
 </body>
-</html>    
+</html>
