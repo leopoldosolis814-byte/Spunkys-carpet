@@ -1,218 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spunky's - Pizza Criolla</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spunky's Pizza - Promo del Día</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body, html { height: 100%; overflow: hidden; background-color: #000; }
+        
+        /* Contenedor del video de fondo */
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-  body {
-    background: #000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    overflow-x: hidden;
-    height: 100dvh;
-  }
+        /* Capa oscura para que resalte el texto */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-  .container {
-    width: 100vw;
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background: #000;
-  }
+        .header h1 { color: #ffcc00; font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .header p { color: #fff; font-size: 1.5rem; font-weight: bold; }
 
-  .logo-overlay {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    z-index: 20;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #e91e8c;
-    box-shadow: 0 0 18px rgba(233,30,140,0.5);
-    background: #000;
-  }
+        .price-tag {
+            background: #e63946;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: pulse 1.5s infinite;
+        }
 
-  .logo-overlay img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
-  .video-wrapper {
-    width: 100%;
-    height: 46dvh;
-    background: #000;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+        .cta-button {
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
 
-  .bg-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .badge {
-    background: #e91e8c;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    align-self: center;
-    margin-top: -18px;
-    z-index: 10;
-    white-space: nowrap;
-    max-width: 92%;
-    box-shadow: 0 4px 15px rgba(233,30,140,0.5);
-  }
-
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    padding: 10px 20px;
-  }
-
-  .promo-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    color: #888;
-    text-transform: uppercase;
-  }
-
-  .title {
-    font-size: clamp(28px, 8vw, 38px);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .price-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .old-price {
-    color: #444;
-    text-decoration: line-through;
-    font-size: clamp(18px, 5vw, 22px);
-    font-weight: 700;
-  }
-
-  .price {
-    color: #FFD600;
-    font-size: clamp(54px, 15vw, 72px);
-    font-weight: 900;
-    line-height: 1;
-  }
-
-  .pre-btn {
-    font-size: 12px;
-    color: #aaa;
-    font-weight: 500;
-  }
-
-  .btn {
-    background: #25d366;
-    color: #fff;
-    text-decoration: none;
-    padding: 18px;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 14px;
-    font-weight: 900;
-    font-size: 18px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    box-shadow: 0 6px 25px rgba(37,211,102,0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
-    100% { transform: scale(1); }
-  }
-
-  .extra {
-    font-size: 12px;
-    color: #666;
-    font-weight: 600;
-  }
-</style>
+        .cta-button:active { transform: scale(0.95); }
+    </style>
 </head>
 <body>
 
-<div class="container">
-
-  <div class="logo-overlay">
-    <img src="https://res.cloudinary.com/ds2udm1nc/image/upload/v1773810851/Copilot_20260316_044401_lubpbe.png" alt="Spunky's">
-  </div>
-
-  <div class="video-wrapper">
-    <video
-      class="bg-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      poster="https://res.cloudinary.com/ds2udm1nc/image/upload/v1773810851/Copilot_20260316_044401_lubpbe.png"
-    >
-      <source src="https://res.cloudinary.com/ds2udm1nc/video/upload/v1773810500/20260318_244610450_yqdyfr.mp4" type="video/mp4">
-      <source src="pizza.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="badge">Masa casera · Salsa de tomate · Muzza · Huevo · Morrones · Carne 🍕</div>
-
-  <div class="content">
-    <div class="promo-label">Destacada del menú</div>
-    <div class="title">Pizza Criolla</div>
-
-    <div class="price-box">
-      <div class="old-price">$10.000</div>
-      <div class="price">$9.500</div>
+    <div id="video-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="20260318_244610450~2.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <div class="pre-btn">¡Pedí ahora y lo recibís rápido!</div>
+    <div class="overlay">
+        <div class="header">
+            <h1>SPUNKY'S</h1>
+            <p>PIZZA CRIOLLA</p>
+        </div>
 
-    <a
-      href="https://wa.me/5493794946552?text=Hola!%20Quiero%20la%20más%20pedida!%0APara%20enviar%20a%20/%20para%20retirar%3A%0AModo%20de%20pago%20(efectivo%2C%20transferencia)%3A%0AComentarios%20adicionales%3A"
-      class="btn"
-    >
-      PEDIR AHORA 🍕
-    </a>
+        <div class="price-tag">
+            $9.500
+        </div>
 
-    <div class="extra">Entrega rápida ⚡ Corrientes, AR</div>
-  </div>
-
-</div>
+        <a href="https://wa.me/543794123456?text=Hola!%20Quiero%20la%20promo%20de%20la%20Pizza%20Criolla" class="cta-button">
+            <span>🍕</span> PEDIR AHORA
+        </a>
+    </div>
 
 </body>
-</html>
-  
+</html>    
