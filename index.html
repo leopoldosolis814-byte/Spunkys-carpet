@@ -2,31 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Spunky's Pizza</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #000; color: white; text-align: center; }
+        body { background-color: #000; color: white; text-align: center; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
         
-        .video-container { position: relative; width: 100%; height: 55vh; background: #000; }
+        /* Achicamos el contenedor del video para que no empuje el botón */
+        .video-container { position: relative; width: 100%; height: 45vh; background: #000; overflow: hidden; }
         video { width: 100%; height: 100%; object-fit: cover; }
 
-        .logo { position: absolute; top: 15px; left: 15px; width: 80px; z-index: 10; }
+        .logo { position: absolute; top: 10px; left: 10px; width: 60px; z-index: 10; border-radius: 50%; }
         
-        .badge-bar { background: #d6007d; color: white; font-size: 11px; padding: 8px; font-weight: bold; text-transform: uppercase; width: 100%; }
+        .badge-bar { background: #d6007d; color: white; font-size: 10px; padding: 6px; font-weight: bold; text-transform: uppercase; width: 100%; letter-spacing: 1px; }
 
-        .content { padding: 20px; background: black; }
-        .destacada { font-size: 12px; color: #aaa; letter-spacing: 2px; margin-bottom: 10px; }
-        .title { font-size: 32px; font-weight: 900; margin-bottom: 15px; }
+        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 15px; background: black; }
+        .destacada { font-size: 11px; color: #aaa; letter-spacing: 2px; margin-bottom: 5px; }
+        .title { font-size: 28px; font-weight: 900; margin-bottom: 10px; }
 
-        .price-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .old-price { color: #888; text-decoration: line-through; font-size: 18px; }
-        .price { color: #ffcc00; font-size: 55px; font-weight: 900; }
+        .price-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
+        .old-price { color: #888; text-decoration: line-through; font-size: 16px; }
+        .price { color: #ffcc00; font-size: 45px; font-weight: 900; }
 
-        .sub-text { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .sub-text { color: #666; font-size: 13px; margin-bottom: 15px; }
         
-        .btn { display: block; background: #2ecc71; color: white; text-decoration: none; padding: 18px; border-radius: 15px; font-size: 20px; font-weight: bold; margin: 0 10px; }
-        .delivery-info { font-size: 12px; color: #888; margin-top: 15px; }
+        .btn { display: block; background: #2ecc71; color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; margin: 0 10px; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3); }
+        .delivery-info { font-size: 11px; color: #555; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -40,7 +41,7 @@
     </div>
 
     <div class="badge-bar">
-        MASA CASERA · SALSA DE TOMATE · MUZZA · HUEVO · MOR...
+        MASA CASERA · SALSA DE TOMATE · MUZZA · HUEVO · MORRÓN
     </div>
 
     <div class="content">
@@ -58,7 +59,7 @@
             PEDIR AHORA 🍕
         </a>
 
-        <div class="delivery-info">Entrega rápida ⚡</div>
+        <div class="delivery-info">Entrega rápida en Corrientes ⚡</div>
     </div>
 
 </body>
